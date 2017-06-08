@@ -54,9 +54,6 @@ def CreateJsonModelFile(filename):
 		f.write(json.dumps(MODELS))
 
 
-
-
-
 if __name__ == '__main__':
 	if(len(sys.argv) == 1):
 		print ('Error -- Use like this: objparser.py objfile.obj')
@@ -67,5 +64,3 @@ if __name__ == '__main__':
 	dir = os.path.dirname(path)
 	os.chdir(dir)
 	CreateJsonModelFile(os.path.splitext(path)[0])
-
-
