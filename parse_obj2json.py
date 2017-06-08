@@ -2,12 +2,8 @@
 # -*- coding: utf-8 -*-
 import sys,os,json
 
-
-
 MODELS = {}
-
 FILE = ''
-
 
 def ParseGeometry(file):
 	print('\n=== Geometry ===')
@@ -64,9 +60,6 @@ def CreateJsonModelFile():
 		f.write(json.dumps(MODELS))
 
 
-
-
-
 if __name__ == '__main__':
 	if(len(sys.argv) == 1):
 		print ('Error -- Use like this: objparser.py objfile.obj')
@@ -76,5 +69,3 @@ if __name__ == '__main__':
 	dir = os.path.dirname(os.path.realpath(FILE))
 	os.chdir(dir)
 	CreateJsonModelFile()
-
-
