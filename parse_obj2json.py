@@ -2,26 +2,16 @@
 # -*- coding: utf-8 -*-
 import sys,os,json
 
-
-
 MODELS = {}
-
 FILE = ''
 
-
 def ParseGeometry(file):
-	print('\n=== Geometry ===')
 
 	MODELS['vertices'] = []
 	MODELS['indices'] = []
 	MODELS['normals'] = []
 	MODELS['normals_idx'] = []
 
-	vertices = MODELS['vertices']
-	indices = MODELS['indices']
-	normals = MODELS['normals']
-	normals_idx = MODELS['normals_idx']
-	
 	nLine = 0
 
 	for line in open(file, 'r').readlines():
@@ -59,8 +49,8 @@ def ParseGeometry(file):
 			print(line)
 			raise
 
-def CreateJsonModelFile():
-	with open('cube.json', 'w') as f:
+def CreateJsonModelFile(filename):
+	with open('%s.json' %filename, 'w') as f:
 		f.write(json.dumps(MODELS))
 
 
@@ -73,8 +63,9 @@ if __name__ == '__main__':
 		sys.exit(0)
 	FILE = sys.argv[1]
 	ParseGeometry(FILE)
-	dir = os.path.dirname(os.path.realpath(FILE))
+	path = os.path.realpath(FILE)
+	dir = os.path.dirname(path)
 	os.chdir(dir)
-	CreateJsonModelFile()
+	CreateJsonModelFile(os.path.splitext(path)[0])
 
 
